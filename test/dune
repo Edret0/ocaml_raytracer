@@ -1,0 +1,3 @@
+(test
+  (name vector3_tests)
+  (libraries Rays ounit2))
