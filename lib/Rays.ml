@@ -1,3 +1,4 @@
-module Ray = Ray.Ray
+module Ray = Ray
 module PPM = PPM
-module Vec3 = Vec3.Vec3
+module Vec3 = Vec3
+

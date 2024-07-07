@@ -1,18 +1,16 @@
-[@@@ warning "-27"]
-module Point3 = Vec3.Vec3
+[@@@warning "-27"]
+module Point3 = Vec3 
+module Color = Vec3 
+type t = {origin:Point3.t;direction:Point3.t}
 
-module Ray =
-    struct
-        type t = 
-            {
-                origin: Point3.t;
-                direction: Point3.t
-            }
-        ;;
-        let at (value: float) (ray: t) : Point3.t = 
-            let newDir = Point3.vector_multi_scalar ray.direction value in
-            Point3.add_vectors ray.origin newDir
-        ;;
-        let ray_color (ray: t) : Point3.t = 
-            Point3.create 0.0 0.0 0.0
-    end
+let create origin direction = {origin; direction;}
+
+let at (t:float) ({origin; direction;} : t) = 
+    Point3.(+=) origin (Point3.prod direction t)
+
+let ray_color ray = 
+    let unit_direction = ray.direction in
+    let a = 0.5 *. (unit_direction.y +. 1.0) in 
+    Vec3.lerp (Vec3.create 1. 1. 1.) (Vec3.create 0.5 0.7 1.0) a
+
+
