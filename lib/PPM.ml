@@ -34,7 +34,7 @@ let create_PPM =
         let v = float_of_int j /. float_of_int (image_height) in
         let r = Ray.create origin 
             (lower_left_corner += (prod horizontal u) += (prod vertical v)) in
-        let color = Ray.ray_color r in 
+        let color = Sphere.sphere_ray_color r in 
 
         let rbyte = int_of_float(color.x *. 255.999) in 
         let gbyte = int_of_float(color.y *. 255.999) in 
